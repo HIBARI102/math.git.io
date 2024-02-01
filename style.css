@@ -57,6 +57,21 @@
     4px 4px 0px #999,
     5px 5px 0px #999;
  }
+.mark11{
+  width: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  height: 30px;
+  padding: 0px 10px;
+  text-align: center;
+  border: none;
+  background: #fff;
+  box-shadow: 1px 1px 0px #999,
+  1px 1px 1px #999,
+  1px 1px 1px #999,
+  1px 1px 1px #999,
+  1px 1px 1px #999;
+ }
  
  .add-s{
     margin: 13px 20px 12px 21px;
