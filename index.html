@@ -17,7 +17,7 @@
          <!-- Main Box -->
          <div class="main-box">
             <div class="show-anwser"><span id="ans"></span></div>
-
+            
             <div class="box1">
                <div class="box-col">
                   <input type="textf" id="intext" class="intext11">
@@ -38,7 +38,7 @@
                 <div class="box-col">
                   <input type="textf" id="intext2"1 class="intext11">
                </div>
-
+            
             </div>
 
             <!-- text input -->
@@ -48,7 +48,7 @@
             <!-- button -->
              <div class="box2">
                <button class="btn"onclick="Game()">Check Anwser</button>
-                  <a href="https://hibari102.github.io/penguinyourcanfly.github.io/">
+                  <a href="http://127.0.0.1:5500/1.html">
                      <button class="ui-btn">
                         <span>
                           back to Game 
@@ -59,13 +59,17 @@
       </div>
    </div>
 
-  <script>
-      let n1 = Math.floor(Math.random()*99999+1);
-      let n2 = Math.floor(Math.random()*99999+1);
-      let n3 = Math.floor(Math.random()*99999+1);
+   <script>
+      let n1 = Math.floor(Math.random()*12+1);
+      let n2 = Math.floor(Math.random()*12+1);
+      let n3 = Math.floor(Math.random()*12+1);
       let ranNum;
       let lost = 0;
+      let win=0;
       let suser;
+      let level=0;
+      let L = 10;
+      let multiply = 10;
       document.getElementById("intext").value = n1;
       document.getElementById("intext1").value = n2;
       document.getElementById("intext2").value = n3;
@@ -76,10 +80,18 @@
       let ladd;
       function Game(){
          var user= document.getElementById("intext3").value;
-
          if( user == adds){
             document.getElementById("ans").innerHTML = "Well Done! Your Answer is Correct";
             lost = 0;
+            win++;
+            if(win > 2 ){
+            win = 0;
+            level++;
+            L = L*10;
+            if( level % 4 == 0){
+               multiply = multiply*10;
+            }
+         }
          }else if(suser == user){
             document.getElementById("ans").innerHTML = "Not Correct Answer"+ user +" . คำตอบนี้คุณพึ่งตอบไปครั้งที่แล้วนะ";
             window.location.href = path;
@@ -103,9 +115,9 @@
       ranNum = Math.floor(Math.random()*4+1);
       if(ranNum == 1){
          
-      n1 = Math.floor(Math.random()*99999+1);
-      n2 = Math.floor(Math.random()*99999+1);
-      n3 = Math.floor(Math.random()*99999+1);
+      n1 = Math.floor(Math.random()*L+1);
+      n2 = Math.floor(Math.random()*L+1);
+      n3 = Math.floor(Math.random()*L+1);
    
       document.getElementById("intext").value = n1;
       document.getElementById("intext1").value = n2;
@@ -117,9 +129,9 @@
 
       }else if(ranNum == 2){
 
-      n1 = Math.floor(Math.random()*99999+1);
-      n2 = Math.floor(Math.random()*99999+1);
-      n3 = Math.floor(Math.random()*99999+1);
+      n1 = Math.floor(Math.random()*L+1);
+      n2 = Math.floor(Math.random()*L+1);
+      n3 = Math.floor(Math.random()*L+1);
    
       document.getElementById("intext").value = n1;
       document.getElementById("intext1").value = n2;
@@ -130,9 +142,13 @@
       adds= n1 + n2 - n3;
       }else if(ranNum == 3){
 
-      n1 = Math.floor(Math.random()*9+2);
-      n2 = Math.floor(Math.random()*9+2);
-      n3 = Math.floor(Math.random()*9+2);
+      n1 = Math.floor(Math.random()*multiply+2);
+      n2 = Math.floor(Math.random()*multiply+2);
+      if(level > 2){
+         n3 = Math.floor(Math.random()*11+2)
+      }else {
+         n3 = 1;
+      }
    
       document.getElementById("intext").value = n1;
       document.getElementById("intext1").value = n2;
@@ -143,9 +159,9 @@
       adds= n1 * n2 * n3;
       }else if(ranNum == 4){
 
-      n1 = Math.floor(Math.random()*11+2);
-      n2 = Math.floor(Math.random()*11+2);
-      n3 = Math.floor(Math.random()*11+2); 
+      n1 = Math.floor(Math.random()*multiply+2);
+      n2 = Math.floor(Math.random()*multiply+2);
+      n3 = Math.floor(Math.random()*multiply+2); 
 
       document.getElementById("intext").value = n1;
       document.getElementById("intext1").value = n2;
@@ -155,8 +171,8 @@
 
       ladd = (n1 + n2)*n3;
       adds = n1 + n2 * n3;
-      
       }
+
       }
       function redirectTo(path) {
         window.location.href = path;
